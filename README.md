@@ -1,4 +1,4 @@
-# wearing-perception  
+# ocellight-perception-bustier
 ### Ocellight: The Perception Bustier
 
 Inspired by the facial features of your friendly neighborhood spider, **Ocellight: The Perception Bustier** is an open-source wearable that manifests nearby motion through domes of illuminating ocelli embedded in a symbolically charged female garment.
@@ -13,7 +13,7 @@ This project explores how sensing technology can be integrated into wearables in
 
 Ocellight = [Ocelli](https://en.wikipedia.org/wiki/Simple_eye_in_invertebrates "Wikipedia: Simple eye in invertibrates") + Light
 
-Ocellight is a body-mounted proximity-sensing system that translates spatial awareness into immediate visual feedback using light.
+**Ocellight** is a body-mounted proximity-sensing system that translates spatial awareness into immediate visual feedback using light.
 
 - Environmental objects approach  
 - Sensors detect distance  
