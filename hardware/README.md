@@ -24,8 +24,8 @@ In its original implementation, the **Ocellight** hardware comprises:
 
 ![diagram][diagram-block]
 
-[diagram-block]: /assets/block.png "Block diagram"
-[//]: # (<img src="/assets/block.png" alt="Block diagram" width=600>)
+[diagram-block]: assets/block.png "Block diagram"
+[//]: # (<img src="assets/block.png" alt="Block diagram" width=600>)
 
 Notes:
 - Sensors are distributed across the garment for directional feedback
@@ -51,8 +51,8 @@ The custom PCB (informally known as the "brain" of Ocellight) features:
 ### Schematic
 
 [//]: # (![image][image-PCB-schematic])
-[//]: # ([image-PCB-schematic]: /assets/PCB-schematic.png "PCB schematic")
-<img src="/assets/PCB-schematic.png" alt="PCB schematic" width=600>
+[//]: # ([image-PCB-schematic]: assets/PCB-schematic.png "PCB schematic")
+<img src="assets/PCB-schematic.png" alt="PCB schematic" width=600>
 
 ### Layout
 
@@ -66,8 +66,8 @@ The bottom surface contains:
 - brightness potentiometer traces
 
 [//]: # (![image][image-PCB-layout])
-[//]: # ([image-PCB-layout]: /assets/PCB-layout.png "PCB layout")
-<img src="/assets/PCB-layout.png" alt="PCB layout" width=500>
+[//]: # ([image-PCB-layout]: assets/PCB-layout.png "PCB layout")
+<img src="assets/PCB-layout.png" alt="PCB layout" width=500>
 
 ?? TODO: Key components labeled:
   - Microcontroller
@@ -84,14 +84,14 @@ The bottom surface contains:
 Front and back:
 
 [//]: # (![image][image-PCB-3D])
-[//]: # ([image-PCB-3D]: /assets/PCB-3D.png "PCB 3D")
-<img src="/assets/PCB-3D.png" alt="PCB 3D" width=500>
+[//]: # ([image-PCB-3D]: assets/PCB-3D.png "PCB 3D")
+<img src="assets/PCB-3D.png" alt="PCB 3D" width=500>
 
 Exploded view:
 
 [//]: # (![image][image-PCB-3D-exploded])
-[//]: # ([image-PCB-3D-exploded]: /assets/PCB-3D-exploded.png "PCB 3D")
-<img src="/assets/PCB-3D-exploded.png" alt="PCB 3D exploded" width=500>
+[//]: # ([image-PCB-3D-exploded]: assets/PCB-3D-exploded.png "PCB 3D")
+<img src="assets/PCB-3D-exploded.png" alt="PCB 3D exploded" width=500>
 
 ---
 
