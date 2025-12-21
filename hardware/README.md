@@ -8,156 +8,250 @@
 
 ## Overview
 
-In its original implementation, the **Ocellight** hardware comprises:
+In its nominal implementation, the **Ocellight** hardware comprises:
 
-- two domes ("ocelli") containing strips of individually addressable LEDs
+- two collections of densely packed strips of individually addressable LEDs
 - two ultrasonic proximity sensors
 - a microcontroller unit (MCU)
 - a potentiometer to control brightness
 - a custom PCB
 - a power bank
-- a physical framework, in the form of a spider's-head bustier
 
----
+The physical framework containing all these components is a wearable, in the form of a spider's-head bustier.
 
-## System Block Diagram
+The LEDs are packed into two translucent domes that resemble colorful, glowing eyes ("ocelli").
 
-![diagram][diagram-block]
+The sensors are discreetly embedded&mdash;hidden in plain sight&mdash;in the material of the wearable, just below the ocelli.
 
-[diagram-block]: assets/block.png "Block diagram"
-[//]: # (<img src="assets/block.png" alt="Block diagram" width=600>)
-
-Notes:
-- Sensors are distributed across the garment for directional feedback
-- MCU handles input triggering and processing, threshold mapping, and LED control
-- LED ocelli are arranged on a dome to simulate eye-like visual output
-
----
-
-## Hardware Schematic
-
-?? TODO
-
----
-
-## PCB
-
-The custom PCB (informally known as the "brain" of Ocellight) features:
-- the **MCU**
-- a 12-pin male **pin header** to connect to the LEDs, the ultrasonic transceivers, and the brightness potentiometer
-- two four-channel **logic level shifters** to modulate between 3V3 (the native voltage of the MCU) and 5V (the native voltage of the LEDs and the ultrasonic transceivers)
-- a **capacitor** to remove noise from the brightness potentiometer signal
-
-### Schematic
-
-[//]: # (![image][image-PCB-schematic])
-[//]: # ([image-PCB-schematic]: assets/PCB-schematic.png "PCB schematic")
-<img src="assets/PCB-schematic.png" alt="PCB schematic" width=600>
-
-### Layout
-
-The top surface contains:
-- ground plane
-- most traces
-
-The bottom surface contains:
-- 3V3 plane
-- 5V traces
-- brightness potentiometer traces
-
-[//]: # (![image][image-PCB-layout])
-[//]: # ([image-PCB-layout]: assets/PCB-layout.png "PCB layout")
-<img src="assets/PCB-layout.png" alt="PCB layout" width=500>
-
-?? TODO: Key components labeled:
-  - Microcontroller
-  - Power input
-- Highlight modular connections for future sensor expansion
-
-### 3D Renders
-
-?? TODO: Key components labeled:
-  - Microcontroller
-  - Power input
-- Highlight modular connections for future sensor expansion
-
-Front and back:
-
-[//]: # (![image][image-PCB-3D])
-[//]: # ([image-PCB-3D]: assets/PCB-3D.png "PCB 3D")
-<img src="assets/PCB-3D.png" alt="PCB 3D" width=500>
-
-Exploded view:
-
-[//]: # (![image][image-PCB-3D-exploded])
-[//]: # ([image-PCB-3D-exploded]: assets/PCB-3D-exploded.png "PCB 3D")
-<img src="assets/PCB-3D-exploded.png" alt="PCB 3D exploded" width=500>
+The remaining hardware is fully contained inside the hidden pockets and folds of the bustier.
 
 ---
 
 ## Key Design Notes
 
-- Low-power, low-heat design for safe, extended wear
-- Modular connectors allow additional sensor types (touch, motion, temperature)
-- Placement optimized for curved surfaces on a chest-mounted garment
+- Low-power/low-heat design, safe for extended wear
+- Optimized for curved surfaces on a chest-mounted garment
+- Modular connectors (pin headers, MCU standoff) allow for quick swapping of key components
+- All processing is performed locally by a single microcontroller
 
 ---
 
-## Future Expandability
+## System Block Diagram
 
-The PCB layout supports adding:
-- Capacitive touch sensors
-- IMU / accelerometer modules
-- Additional LED clusters
-- Alternative microcontroller options for experimental builds
+[//]: # (
+![image][image-block-diagram]
+)
+
+[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
+[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[image-block-diagram]: assets/hardware_block-diagram.png "Block diagram"
+<img src="assets/hardware_block-diagram.png" alt="Block diagram" width="90%">
+
+Notes:
+1. Multiple ultrasonic transceivers (proximity sensors) provide directional sensing.
+1. Individually addressable LEDs provide unlimited opportunities for custom, non-duplicated display modes.
+1. MCU handles input triggering and processing, threshold mapping, and LED control.
+1. Brightness potentiometer allows overall brightness to be adjusted manually, according to ambient lighting conditions.
+
+---
+
+## Hardware Schematic
+
+[//]: # (
+![image][image-hardware-schematic]
+)
+
+[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
+[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[image-hardware-schematic]: assets/hardware_schematic.png "PCB layout"
+<img src="assets/hardware_schematic.png" alt="Hardware schematic" width="39%">
+
+[//TODO]: # (
+Explain all signal names
+Label optic nerves
+)
 
 ---
 
 ## Devices
 
 - **Microcontroller unit (MCU)**:
-	- ESP32-DevKitC version 1 (ESP-WROOM-32).
-	- 30-pin DIP (specific [pinout][pinout] expected by custom PCB).
-	- USB-C connector.
+
+	- ESP32-DevKitC version 1 (ESP-WROOM-32) family
+	- 30-pin DIP (specific [pinout][pinout] expected by custom PCB)
+	- USB-C connector
+	- Voltage: 3V3
 
 [pinout]: https://javanelec.com/stfiles/getappdocument/1/true/f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8 "Pinout diagram"
 
+- **LED**:
+
+	- WS2812B or similar
+	- Preferred density: 160/mm
+	- Preferred width: 5&thinsp;mm or less
+	- Voltage: 5V
+
+- **Proximity sensor**:
+
+	- HC-SR04 or similar
+	- Preferred diameter: 8&thinsp;mm or less
+	- Operating frequency: 40&thinsp;kHz
+	- Effectual angle: 15&deg;
+	- Voltage: 5V
+
 - **Brightness potentiometer**:
-	- Controls the overall brightness of the LEDs, from full off to full on.
-	- Adjustable by the wearer.
-	- Driven by the MCU's 3V3 output.
+
+	- Controls the overall brightness of the LEDs, from full-off to full-on
+	- Adjustable by the wearer
+	- Voltage: 0V&ndash;3V3
 
 - **Power bank**:
-	- Drives the microcontroller unit, the LEDs, and the ultrasonic transceivers.
-	- Integrated into the garment.
-	- Specifications: USB-A, 5V, 20W nominal.
 
-- **On/off switch**:
-	- There is no built-in power switch.
-The system is active whenever the power bank is supplying power to the microcontroller unit and the LEDs.
+	- Drives the microcontroller unit, the LEDs, and the ultrasonic transceivers
+	- Specifications: USB-A, 5V, 20W nominal
+
+---
+
+## PCB
+
+The custom printed circuit board (informally known as the "brain" of **Ocellight**) features:
+- the 30-pin **MCU** (ESP32 DevKitC family)
+- a 12-pin male **pin header** to connect to the LEDs, the ultrasonic transceivers, and the brightness potentiometer
+- two four-channel **logic level shifters** to modulate between 3V3 (the native voltage of the MCU) and 5V (the native voltage of the LEDs and the ultrasonic transceivers)
+- a filter **capacitor** to remove noise from the brightness potentiometer signal
+
+---
+
+### Schematic
+
+[//]: # (
+![image][image-PCB-schematic]
+)
+
+[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
+[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[image-PCB-schematic]: assets/hardware_PCB-schematic.png "PCB schematic"
+<img src="assets/hardware_PCB-schematic.png" alt="PCB schematic" width="90%">
+
+[//TODO]: # (
+Explain all signal names
+)
+
+---
+
+### Layout
+
+[//]: # (
+![image][image-PCB-layout]
+)
+
+[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
+[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[image-PCB-layout]: assets/hardware_pcb-layout.png "PCB layout"
+<img src="assets/hardware_pcb-layout.png" alt="PCB layout" width="90%">
+
+The top copper layer contains:
+
+- ground plane
+- most traces
+
+The bottom copper layer contains:
+
+- 3V3 plane
+- 5V trace
+- brightness potentiometer trace
+
+To reduce the overall footprint, some components are piggybacked:
+
+- The logic level shifters fit under the microcontroller, which is on standoffs for ease of swapping
+- The pin header fits under the logic level shifters on the opposite side of the board
+
+---
+
+### 3D Render
+
+[//TODO]: # (
+Label key components:
+	MCU, pin header, logic level shifters, capacitor, USB power input
+)
+
+[//]: # (
+![image][image-PCB-3D]
+)
+
+[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
+[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[image-PCB-3D]: assets/hardware_pcb-rendering.png "PCB rendering"
+<img src="assets/hardware_pcb-rendering.png" alt="PCB rendering" width="90%">
+
+---
+
+## Limitations and Workarounds
+
+### Power-On
+
+The nominal design of this project includes no built-in power switch.
+The system is active whenever the power bank is connected to the microcontroller unit and the LEDs.
+
+To avoid parasitic power draw, the MCU should never be energized unless the LEDs are also energized
+
+
+### LED Voltage Drop
+
+Individually addressable LEDs typically suffer from substantial voltage drop over distances of a few meters, causing LEDs far from the power source to acquire a dim, yellow glow.
+
+The workaround is to apply voltage injection.
+This can be implemented by "laddering" the voltage and ground signals from each strip of LEDs to the next, taking advantage of the fact that the LED strips used in the cups are inherently only a few decimeters long at most.
+
+### LED Power
+
+To avoid burning out the MCU, the LEDs must not draw their power from the MCU's 5V power supply.
+Instead, they must be powered directly from the power bank.
+
+To avoid voltage drops, a 0.1&thinsp;&micro;F buffer capacitor is placed across the power and ground lines to each LED strip, as close as practical to the first LED.
+
+If the power bank is incapable of supplying sufficient power, some LEDs may be seen to glow with a dim or yellow light at high brightness levels.
+
+### LED Data Ringing
+
+The data line from the MCU to the first LED on an LED strip is subject to ringing, particularly at lengths on the order of meters or longer.
+Although this is likely not an issue with the short data lines in a typical **Ocellight** implementation, it is minimized by installing a resistor (nominally 330&thinsp;&ohm;) in series on the data line, as close as practical to the first LED on the strip.
+
+### Logic Level Shifting
+
+The specific MCU used in the nominal architecture of the project runs on a voltage level of 3V3.
+The LEDs and proximity sensors expect a voltage level of 5V.
+
+Although the MCU may be able to get away with using 3V3 to indicate logic level "one," the use of a logic level shifter is preferred, for cleaner data.
+
+---
+
+## Future Expandability
+
+The modular hardware design supports adding and swapping numerous peripherals and key components, including:
+
+- sensors (e.g., touch, motion, temperature, humidity)
+- displays and output devices (e.g., additional LED strips, single LEDs)
+- other input devices (e.g., hue potentiometer)
+
+With a PCB redesign, the microcontroller itself can be replaced with a different one or with a single-board computer.
+
+See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
 
 ---
 
 ## Notes for Builders
 
-### Bench test:
+### Bench test
 
 - Test LED response
 - Test each sensor individually
 - Verify LED behavior under varied lighting conditions
 - Verify sensor behavior under varied conditions of ambient temperature and humidity
 
-### In operation:
+### Live test
 
+- Power bank depletion varies with light intensity
 - Monitor heat during extended operation
-
----
-
-## Open Source Use
-
-This hardware design (including PCB design) is shared as part of an open hardware project.
-
-You are encouraged to adapt, simplify, or repurpose it for other wearable or body-mounted interfaces.
-If you do, consider how behavior, feedback, and failure will be *felt,* not just measured.
 
 ---
