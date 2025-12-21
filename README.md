@@ -1,25 +1,50 @@
 # ocellight-perception-bustier
-### Ocellight: The Perception Bustier
 
-Inspired by the facial features of your friendly neighborhood spider, **Ocellight: The Perception Bustier** is an open-source wearable that manifests nearby motion through domes of illuminating ocelli embedded in a symbolically charged female garment.
+---
 
-Proximity becomes light. Personal space becomes visible. What is usually felt subconsciously is made explicit — sensed and seen on the body.
+## Ocellight: The Perception Bustier
 
-This project explores how sensing technology can be integrated into wearables in ways that feel visceral rather than ornamental, expressive rather than distracting. Beyond adding electronics “because we can,” Ocellight asks what it means to *wear* perception.
+#### Open-Source Wearable Hardware Project
+
+### Main Document
+
+---
+
+## Overview
+
+Inspired by the facial features of your friendly neighborhood spider, **Ocellight: The Perception Bustier** is an open-source wearable that manifests spatial awareness through the illuminated domes of a symbolically charged female garment.
+
+Proximity becomes light.
+Personal space becomes visible.
+What is often sensed only subconsciously is made explicit: displayed on the body, visible to all.
+
+This project explores how sensing technology can be integrated into wearables in ways that feel visceral rather than ornamental, expressive rather than distracting.
+Far from simply retrofitting a dynamic light show into an existing garment, **Ocellight** asks what it means to *wear* perception.
 
 ---
 
 ## What This Is
 
-Ocellight = [Ocelli](https://en.wikipedia.org/wiki/Simple_eye_in_invertebrates "Wikipedia: Simple eye in invertibrates") + Light
+### Ocellight = [Ocelli][ocelli] + Light
 
-**Ocellight** is a body-mounted proximity-sensing system that translates spatial awareness into immediate visual feedback using light.
+[ocelli]: https://en.wikipedia.org/wiki/Simple_eye_in_invertebrates#Spider_eyes "Wikipedia: Simple eye in invertebrates"
 
-- Environmental objects approach  
-- Sensors detect distance  
-- Clusters of LED form “ocelli” that respond in color and intensity  
+**Ocellight** is a body-mounted proximity-sensing system that translates nearby motion into immediate visual feedback.
+It is constructed as a bustier resembling a giant spider's head, its cups repurposed into a pair of *ocelli* (the small eye-like structure found in many spiders and other creatures).
+But these ocelli glow with light, their color and intensity changing in response to what they "see" in front of them.
 
-The result is a wearable interface that reacts to the world around it without screens, sound, or notifications – borrowing from non-human vision systems to extend human awareness.
+A typical interaction is as follows:
+
+1. Normally, both ocelli glow with a "calm" pattern of light.
+
+1. As a nearby environmental object (e.g., a person) crosses into the wearer's personal space, ultrasonic sensors pick up its distance and velocity.
+
+1. The ocelli begin to adopt a "warning/angry/fearful" glow, in patterns that also indicate the intruder's direction, proximity, and rapidity of approach.
+
+1. Once the intruder&mdash;and/or the wearer&mdash;has retreated, the ocelli gradually (perhaps tentatively) return to their "calm" glow.
+
+Thus, even without screens, sounds, or text notifications, environmental cause and effect become plainly visible.
+The result is a wearable interface that reacts to its surroundings and reflects its state back to them&mdash;borrowing from non-human vision systems to extend human awareness.
 
 ---
 
@@ -27,33 +52,39 @@ The result is a wearable interface that reacts to the world around it without sc
 
 The form is intentional.
 
-As a symbolically-charged garment worn on the chest, Ocellight intersects with ideas of vulnerability, visibility, and personal boundaries — particularly as they relate to female bodies. The flashing ocelli act as both warning and signal: a biological metaphor rendered in electronics. In the same way spider eyes sense proximity as danger, so too do the bustier cups of Ocellight.
+**Ocellight** explores the intersection of visibility, vulnerability, and personal boundaries, particularly as they relate to the female body.
+As a symbolically charged garment worn on the chest, the project leverages technology to advance wearable art into a design space rich with social meaning.
 
-This project leverages electronics to advance wearable art to a design space rich with social meaning.
+In the same way spider eyes sense proximity as danger, the bustier cups of **Ocellight** react to their environment, flashing out now a signal, now a warning&mdash;a biological metaphor rendered in electronics.
 
 ---
 
-## Hardware Overview
+## Hardware
 
-Under the theatrics is a relatively straightforward hardware system:
+Under the theatrics of this visually arresting electronic wearable lies a relatively straightforward and lightweight hardware system, assembled largely from off-the-shelf components:
 
-- **Sensors:** Proximity sensors selected for short-range, human-scale interaction  
-- **Outputs:** LED clusters chosen for immediate, glanceable feedback without screens  
-- **Control:** Microcontroller-based system with simple, predictable behavior
-- **Intensity:** Potentiometer controls light brightness
-- **PCB:** Custom board used to reduce wiring complexity and improve reliability  
-- **Power:** Designed for low current draw and manageable thermal output  
+- **Control**: Microcontroller-based system generates simple, predictable behavior
+- **Inputs**: Ultrasonic proximity sensors provide short-range, human-scale interaction
+- **Outputs**: Clusters of individually addressable LEDs produce immediate, glanceable feedback
+- **Brightness**: Wearer-adjustable potentiometer controls LED intensity
+- **Power bank**: Low current draw; manageable thermal output; swappable in seconds
+- **Passive components**: Resistors, capacitors, logic level shifters, connectors, etc.
 
-A high-level hardware and PCB overview can be found in  
-`hardware/pcb/overview.pdf`.
+The principal custom components are:
+
+- **Printed circuit board**: Reduces wiring complexity; improves reliability
+- **Cable harness**: A single pluggable ribbon cable connects all the components, simplifying swapping
+
+More detail is available in `hardware/README.md`.
 
 ---
 
 ## Firmware
 
-Sensor input is mapped directly to light output, with tunable thresholds and transparent behavior. Without any obfuscated decision-making, environmental cause and effect are made plain and visible.
+Sensor input is continually mapped to light output via tunable thresholds and non-complex time-based behavioral models.
 
-Algorithms for lighting pattern mimics the jitters of life-like fluctuations, smoothing out various signal spikes and dips.
+The algorithm driving the light patterns mimics the jitters and fluctuations of real-life interactions.
+Signal spikes and dips are smoothed out; occasional noise and uncertainty are added.
 
 More detail is available in `firmware/README.md`.
 
@@ -63,31 +94,14 @@ More detail is available in `firmware/README.md`.
 
 Building electronics for the body means designing for:
 
-- Curved and moving surfaces  
-- Heat near skin  
-- Cable strain and connection fatigue 
-- Component moisture and heat tolerance 
-- Comfort and safety over time  
-- Public visibility and performance  
+- Curved and moving surfaces
+- Wearer comfort and safety over extended time periods: heat, friction, weight distribution, sharp edges, etc.
+- Ability to hide or camouflage components
+- Moisture and heat tolerance
+- Durability, cable strain, connection fatigue 
+- Public visibility and performance
 
 These constraints shape every part of the system, from component placement to firmware timing.
-
----
-
-## Open Source Intent
-
-Ocellight is shared as an open hardware case study.
-
-- Hardware files, firmware, and documentation are intended for reuse  
-- The architecture is modular and adaptable beyond this garment  
-- Patterns documented here may be useful for other wearable, assistive, or expressive interfaces  
-
----
-
-## Media
-
-- **Demo video:** see `media/demo-video.md`  
-- **Process and build images:** available in `media/photos/`
 
 ---
 
@@ -99,12 +113,34 @@ The design continues to evolve through iteration, presentation, and use.
 
 ---
 
+## Open Source Intent
+
+**Ocellight** is shared as an open hardware project.
+
+- Hardware files, firmware, and documentation are intended for reuse
+- The architecture is modular and adaptable beyond this implementation
+- Patterns documented here may be useful for other wearable, assistive, or expressive interfaces
+- Interested persons are encouraged to adapt, simplify, or repurpose it as desired, including for other wearable or body-mounted interfaces.
+
+---
+
+## Media
+
+- **Demo video:** see `media/demo-video.md`
+- **Process and build images:** available in `media/photos/`
+
+---
+
 ## Acknowledgements
 
-This project is made possible by the Designer Development Award from the [**World of WearableArt**](https://worldofwearableart.com "World of WearableArt Website") in New Zealand.
+This project is made possible by the Designer Development Award from [**World of WearableArt**][wow] in New Zealand.
+
+[wow]: https://worldofwearableart.com "World of WearableArt website"
 
 ---
 
 ## Contact
 
 Questions, reuse inquiries, and collaborations are welcome via this repository.
+
+---
