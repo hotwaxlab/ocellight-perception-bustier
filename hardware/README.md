@@ -39,11 +39,13 @@ The remaining hardware is fully contained inside the hidden pockets and folds of
 ## System Block Diagram
 
 [//]: # (
-![image][image-block-diagram]
+![image-block-diagram][]
 )
 
-[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
-[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[//]: # (
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
+)
 [image-block-diagram]: assets/hardware_block-diagram.png "Block diagram"
 <img src="assets/hardware_block-diagram.png" alt="Block diagram" width="90%">
 
@@ -54,35 +56,42 @@ Notes:
 1. Brightness potentiometer allows overall brightness to be adjusted manually, according to ambient lighting conditions.
 
 ---
-
-## Hardware Schematic
-
 [//]: # (
-![image][image-hardware-schematic]
+\ TODO: Unhide when fleshed out
+\
+\## Hardware Schematic
+\
+\\//]: # \(
+\![image-hardware-schematic][]
+\)
+\
+\[//]: # \(
+\\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\\ ELSE COMMENT OUT <img ...> LINE BELOW
+\)
+\[image-hardware-schematic]: assets/hardware_schematic.png "Hardware schematic"
+\<img src="assets/hardware_schematic.png" alt="Hardware schematic" width="39%">
+\
+\[//]: # \(
+\ TODO: Explain all signal names
+\ TODO: Label optic nerves
+\)
+\
+\---
 )
 
-[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
-[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
-[image-hardware-schematic]: assets/hardware_schematic.png "PCB layout"
-<img src="assets/hardware_schematic.png" alt="Hardware schematic" width="39%">
-
-[//TODO]: # (
-Explain all signal names
-Label optic nerves
-)
-
----
-
-## Devices
+## Components
 
 - **Microcontroller unit (MCU)**:
 
 	- ESP32-DevKitC version 1 (ESP-WROOM-32) family
-	- 30-pin DIP (specific [pinout][pinout] expected by custom PCB)
+	- 30-pin DIP (specific [pinout][] expected by custom PCB)
 	- USB-C connector
 	- Voltage: 3V3
 
-[pinout]: https://javanelec.com/stfiles/getappdocument/1/true/f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8 "Pinout diagram"
+[pinout]:
+ https://javanelec.com/stfiles/getappdocument/1/true/f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8
+ "Pinout diagram"
 
 - **LED**:
 
@@ -128,10 +137,12 @@ The custom printed circuit board (informally known as the "brain" of **Ocellight
 ![image][image-PCB-schematic]
 )
 
-[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
-[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
-[image-PCB-schematic]: assets/hardware_PCB-schematic.png "PCB schematic"
-<img src="assets/hardware_PCB-schematic.png" alt="PCB schematic" width="90%">
+[//]: # (
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
+)
+[image-PCB-schematic]: assets/hardware_pcb-schematic.png "PCB schematic"
+<img src="assets/hardware_pcb-schematic.png" alt="PCB schematic" width="90%">
 
 [//TODO]: # (
 Explain all signal names
@@ -145,8 +156,10 @@ Explain all signal names
 ![image][image-PCB-layout]
 )
 
-[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
-[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[//]: # (
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
+)
 [image-PCB-layout]: assets/hardware_pcb-layout.png "PCB layout"
 <img src="assets/hardware_pcb-layout.png" alt="PCB layout" width="90%">
 
@@ -161,7 +174,7 @@ The bottom copper layer contains:
 - 5V trace
 - brightness potentiometer trace
 
-To reduce the overall footprint, some components are piggybacked:
+To reduce the overall footprint, some components are physically piggybacked:
 
 - The logic level shifters fit under the microcontroller, which is on standoffs for ease of swapping
 - The pin header fits under the logic level shifters on the opposite side of the board
@@ -170,17 +183,19 @@ To reduce the overall footprint, some components are piggybacked:
 
 ### 3D Render
 
-[//TODO]: # (
-Label key components:
-	MCU, pin header, logic level shifters, capacitor, USB power input
+[//]: # (
+\ TODO: Label key components:
+\	MCU, pin header, logic level shifters, capacitor, USB power input
 )
 
 [//]: # (
 ![image][image-PCB-3D]
 )
 
-[// TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE]: # ()
-[// ELSE COMMENT OUT <img ...> LINE BELOW]: # ()
+[//]: # (
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
+)
 [image-PCB-3D]: assets/hardware_pcb-rendering.png "PCB rendering"
 <img src="assets/hardware_pcb-rendering.png" alt="PCB rendering" width="90%">
 
@@ -236,7 +251,7 @@ The modular hardware design supports adding and swapping numerous peripherals an
 
 With a PCB redesign, the microcontroller itself can be replaced with a different one or with a single-board computer.
 
-See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
+See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenues of inquiry.
 
 ---
 
