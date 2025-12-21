@@ -17,9 +17,9 @@ In its nominal implementation, the **Ocellight** hardware comprises:
 - a custom PCB
 - a power bank
 
-The physical framework containing all these components is a wearable, in the form of a spider's-head bustier.
+The physical framework containing all these components is a wearable, in the form of a spider’s-head bustier.
 
-The LEDs are packed into two translucent domes that resemble colorful, glowing eyes ("ocelli").
+The LEDs are packed into two translucent domes that resemble colorful, glowing eyes (“ocelli”).
 
 The sensors are discreetly embedded&mdash;hidden in plain sight&mdash;in the material of the wearable, just below the ocelli.
 
@@ -90,7 +90,8 @@ Notes:
 	- Voltage: 3V3
 
 [pinout]:
- https://javanelec.com/stfiles/getappdocument/1/true/f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8
+ <https://javanelec.com/stfiles/getappdocument/1/true/
+  f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8>
  "Pinout diagram"
 
 - **LED**:
@@ -123,7 +124,7 @@ Notes:
 
 ## PCB
 
-The custom printed circuit board (informally known as the "brain" of **Ocellight**) features:
+The custom printed circuit board (informally known as the “brain” of **Ocellight**) features:
 - the 30-pin **MCU** (ESP32 DevKitC family)
 - a 12-pin male **pin header** to connect to the LEDs, the ultrasonic transceivers, and the brightness potentiometer
 - two four-channel **logic level shifters** to modulate between 3V3 (the native voltage of the MCU) and 5V (the native voltage of the LEDs and the ultrasonic transceivers)
@@ -134,7 +135,7 @@ The custom printed circuit board (informally known as the "brain" of **Ocellight
 ### Schematic
 
 [//]: # (
-![image][image-PCB-schematic]
+![image-PCB-schematic][]
 )
 
 [//]: # (
@@ -153,7 +154,7 @@ Explain all signal names
 ### Layout
 
 [//]: # (
-![image][image-PCB-layout]
+![image-PCB-layout][]
 )
 
 [//]: # (
@@ -189,7 +190,7 @@ To reduce the overall footprint, some components are physically piggybacked:
 )
 
 [//]: # (
-![image][image-PCB-3D]
+![image-PCB-3D][]
 )
 
 [//]: # (
@@ -216,11 +217,11 @@ To avoid parasitic power draw, the MCU should never be energized unless the LEDs
 Individually addressable LEDs typically suffer from substantial voltage drop over distances of a few meters, causing LEDs far from the power source to acquire a dim, yellow glow.
 
 The workaround is to apply voltage injection.
-This can be implemented by "laddering" the voltage and ground signals from each strip of LEDs to the next, taking advantage of the fact that the LED strips used in the cups are inherently only a few decimeters long at most.
+This can be implemented by “laddering” the 5V and ground signals from each strip of LEDs to the next, taking advantage of the fact that the LED strips used in the cups are inherently only a few decimeters long at most.
 
 ### LED Power
 
-To avoid burning out the MCU, the LEDs must not draw their power from the MCU's 5V power supply.
+To avoid burning out the MCU, the LEDs must not draw their power from the MCU’s 5V power supply.
 Instead, they must be powered directly from the power bank.
 
 To avoid voltage drops, a 0.1&thinsp;&micro;F buffer capacitor is placed across the power and ground lines to each LED strip, as close as practical to the first LED.
@@ -237,7 +238,7 @@ Although this is likely not an issue with the short data lines in a typical **Oc
 The specific MCU used in the nominal architecture of the project runs on a voltage level of 3V3.
 The LEDs and proximity sensors expect a voltage level of 5V.
 
-Although the MCU may be able to get away with using 3V3 to indicate logic level "one," the use of a logic level shifter is preferred, for cleaner data.
+Although the MCU may be able to get away with using 3V3 to indicate logic level “one,” the use of a logic level shifter is preferred, for cleaner data.
 
 ---
 
@@ -251,7 +252,9 @@ The modular hardware design supports adding and swapping numerous peripherals an
 
 With a PCB redesign, the microcontroller itself can be replaced with a different one or with a single-board computer.
 
-See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenues of inquiry.
+See the [expansion ideas][expansion-ideas] file for some suggested avenues of inquiry.
+
+[expansion-ideas]: /docs/expansion-ideas.md "Expansion ideas"
 
 ---
 
