@@ -6,9 +6,9 @@
 
 ---
 
-## Design Principles
+## Overview
 
-The user interface encapsulated by the firmware is shaped by a number of guiding ideas:
+The user interface encapsulated by the firmware is shaped by a number of design principles:
 
 - **Transparency**: Sensor input maps directly to output behavior
 - **Predictability**: No hidden states or unexpected modes
@@ -23,49 +23,47 @@ The goal is not to simulate intelligence, but to extend perception.
 
 The firmware logic loop (heartbeat) continuously performs the following sequence:
 
-1. Read the proximity value of each sensor
-1. Apply time-based smoothing to those values
-1. For each pixel in both ocelli, perform a PID (proportional&ndash;integral&ndash;differential) mapping of both proximity values to color and brightness
-1. Apply a brightness modifier, based on the position of a wearer-adjustable potentiometer.
+1. Read the proximity value (distance to nearest object) of each sensor
+1. Read the position of the wearer-adjustable potentiometer
+1. Apply time-based smoothing to all the above readings
+1. Compute the color and base brightness of each pixel, using a distance-weighted PID (proportional&ndash;integral&ndash;differential) mapping to merge the proximity values from both sensors with a default (background) texture
+1. Apply an overall brightness modifier to all pixels, according to the position of the brightness potentiometer
 1. Drive each LED accordingly
 
-If serial communication is enabled, the firmware can communicate key operational parameters to a debugger/monitor, and an external user can drive and modify the firmware's behavior.
+If serial communication is enabled, the firmware can communicate key operational parameters to a debugger/monitor, and an external user can query and modify the firmware's behavior.
 
-All sensing and recording is local and short-term. There is no long-term data logging or wireless transmission.
+All sensing and recording is local and short-term.
+There is no long-term data logging, wireless transmission, etc.
 
 ---
 
-## Hardware Considerations
+### Ultrasonic Sensor Tuning
 
-### Ultrasonic Sensors
+Each proximity sensor operates independently, giving the garment's responses a certain amount of directionality.
 
-Each proximity sensor operates independently, allowing the garment to respond directionally rather than globally.
+Sensor thresholds, response curves, and ping frequencies are tuned for human-scale distances and interactions.
 
-- Sensor thresholds are configurable
-- Response curves are tuned for human-scale distances
-- Noise filtering is intentionally minimal to preserve responsiveness
+---
 
-The system favors immediacy over precision; a felt warning is more useful than a perfect measurement.
+### LED Interpretation
 
-### LEDs
-
-Each cup of the bustier represents an *ocellus* *(pl. ocelli),* the simple eye found in many spiders and other creatures.
-
-Within the cup lies a cluster of individually addressable LEDs.
-Continuous inputs received from the sensors are mapped to the LEDs in multiple ways:
+Inputs received from the sensors are continually mapped to the individually addressable LEDs within each cup in multiple ways:
 
 - Noticeability:
+
 	- Patterns are noticeable to an observer who views them either directly or peripherally
 	- The wearer has limited ability to observe the LED patterns directly
+
 - Parsability:
+
 	- Patterns can be parsed at a glance
 	- Color shifts indicate proximity
 	- Brightness increases as distance closes
-	- Background can be set to a visually intriguing color or texture
+	- Background can be set to an appropriate color or texture
 
 ---
 
-## Timing and Performance
+### Timing and Performance
 
 The firmware loop runs continuously and regularly.
 
@@ -78,20 +76,26 @@ System startup takes less than two seconds.
 
 ---
 
-## Configuration
+## Operational Parameters and Future Expandability
 
-### Key Parameters
+The modular firmware design supports adding and swapping various components and behaviors.
 
-Various operational parameters are exposed as constants within the code.
+Several operational parameters are exposed as constants within the code.
 These include minimum and maximum proximity, color ranges and patterns, loop frequency, and smoothing functions.
 
-Builders are encouraged to tune these values, particularly based on such use considerations as ambient lighting, sensor parameters, and personal comfort.
+Builders are encouraged to tune and alter these values, particularly based on such use considerations as ambient lighting, sensor sensitivity, and wearer comfort.
 
-?? can also change the smoothing function. We use a moving average. Could use median filter or other.
+[// TODO]: # (
+things that can interfere: other sensors sending while we're listening for an echo
+)
 
-?? things that can interfere: other sensors sending while we're listening for an echo
+See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
 
-### Perceived Limitations
+---
+
+## Limitations and Workarounds
+
+### Proximity Measurement Precision
 
 Each ultrasonic sensor signal is converted to a *z-*<span></span>distance by multiplying the round-trip delay time by one-half the speed of sound.
 This is subject to a number of limitations, including the following:
@@ -108,13 +112,7 @@ No calibration is performed, and there are no sensors to detect ambient temperat
 1. The minimum round-trip flight time that can be measured must be somewhat greater than the duration of the sensing pulse (200&thinsp;&micro;sec. = eight cycles of a 40&thinsp;kHz signal).
 This corresponds to a proximity of roughly 4&thinsp;cm under standard conditions.
 
----
-
-## Open Source Use
-
-This firmware is shared as part of an open hardware project.
-
-You are encouraged to adapt, simplify, or repurpose it for other wearable or body-mounted interfaces.
-If you do, consider how behavior, feedback, and failure will be *felt,* not just measured.
+Due to these and other environmental and timing uncertainties, the empirically observed measurement granularity (&plusmn;4 cm) is somewhat larger than the value computed for an ideal physical system (&plusmn;3 mm).
+However, **Ocellight** favors responsiveness over precision in any case, since for its purposes, a "felt" warning is not only as good as, but in many ways more apropos than, a perfect measurement.
 
 ---
