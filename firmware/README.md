@@ -85,11 +85,11 @@ These include minimum and maximum proximity, color ranges and patterns, loop fre
 
 Builders are encouraged to tune and alter these values, particularly based on such use considerations as ambient lighting, sensor sensitivity, and wearer comfort.
 
-[// TODO]: # (
-things that can interfere: other sensors sending while we're listening for an echo
+[//]: # (
+\ TODO: Things that can interfere: other sensors sending while we're listening for an echo
 )
 
-See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
+See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenues of inquiry.
 
 ---
 
