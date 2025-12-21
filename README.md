@@ -6,7 +6,16 @@
 
 #### Open-Source Wearable Hardware Project
 
-### Main Document
+[//]: # (
+![image][image-title-card]
+)
+
+[//]: # (
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
+)
+[image-title-card]: fabrication/assets/design_sketch.png "Design sketch"
+<img src="fabrication/assets/design_sketch.png" alt="Design sketch" width="90%">
 
 ---
 
@@ -23,7 +32,7 @@ Far from simply retrofitting a dynamic light show into an existing garment, **Oc
 
 ---
 
-## What This Is
+## What Is This?
 
 ### Ocellight = [Ocelli][ocelli] + Light
 
@@ -59,7 +68,9 @@ In the same way spider eyes sense proximity as danger, the bustier cups of **Oce
 
 ---
 
-## Hardware
+## [Hardware][hardware-readme]
+
+[hardware-readme]: hardware/README.md "Hardware README"
 
 Under the theatrics of this visually arresting electronic wearable lies a relatively straightforward and lightweight hardware system, assembled largely from off-the-shelf components:
 
@@ -79,7 +90,9 @@ More detail is available in `hardware/README.md`.
 
 ---
 
-## Firmware
+## [Firmware][firmware-readme]
+
+[firmware-readme]: firmware/README.md "Firmware README"
 
 Sensor input is continually mapped to light output via tunable thresholds and non-complex time-based behavioral models.
 
@@ -90,7 +103,9 @@ More detail is available in `firmware/README.md`.
 
 ---
 
-## Wearability as a Constraint
+## [Fabrication: Wearability as a Constraint][fabrication-readme]
+
+[fabrication-readme]: fabrication/README.md "Fabrication README"
 
 Building electronics for the body means designing for:
 
@@ -102,6 +117,8 @@ Building electronics for the body means designing for:
 - Public visibility and performance
 
 These constraints shape every part of the system, from component placement to firmware timing.
+
+More detail is available in `fabrication/README.md`.
 
 ---
 
@@ -115,6 +132,12 @@ The design continues to evolve through iteration, presentation, and use.
 
 ## Open Source Intent
 
+
+**Ocellight** was made possible by the Designer Development Award from [**World of WearableArt**][wow] in New Zealand.
+The purpose of this award is to prioritize learning and sharing.
+
+[wow]: https://worldofwearableart.com "World of WearableArt website"
+
 **Ocellight** is shared as an open hardware project.
 
 - Hardware files, firmware, and documentation are intended for reuse
@@ -122,20 +145,23 @@ The design continues to evolve through iteration, presentation, and use.
 - Patterns documented here may be useful for other wearable, assistive, or expressive interfaces
 - Interested persons are encouraged to adapt, simplify, or repurpose it as desired, including for other wearable or body-mounted interfaces.
 
----
-
-## Media
-
-- **Demo video:** see `media/demo-video.md`
-- **Process and build images:** available in `media/photos/`
+See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
 
 ---
+[//]: # (
+\ TODO: Unhide when fleshed out
+\
+\## Media
+\
+\- **Demo video:** see `media/demo-video.md`
+\- **Process and build images:** available in `media/photos/`
+\
+\---
+)
 
 ## Acknowledgements
 
-This project is made possible by the Designer Development Award from [**World of WearableArt**][wow] in New Zealand.
-
-[wow]: https://worldofwearableart.com "World of WearableArt website"
+This project was made possible by the Designer Development Award from [**World of WearableArt**][wow] in New Zealand.
 
 ---
 
