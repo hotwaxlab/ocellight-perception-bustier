@@ -35,7 +35,7 @@ The base pattern is derived from a traditional bustier block, modified to suppor
 
 [Pattern files][pattern] are provided as reference materials and may need to be adapted to the wearer’s body measurements and intended use.
 
-[pattern]: fabrication/Ocellight%20Pattern%20PRINT.pdf "Pattern file"
+[pattern]: Ocellight%20Pattern%20PRINT.pdf "Pattern file"
 
 ---
 
