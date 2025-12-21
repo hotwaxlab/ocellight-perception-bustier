@@ -15,9 +15,9 @@ Those interested in adapting the project are encouraged to think in these and ot
 
 ## Physical Configuration
 
-The original physical configuration of **Ocellight** is that of a bustier resembling a giant spider's head, its cups reminiscent of ocelli.
-The original conception&mdash;as a spatial and temporayl visualization of the dynamics of personal space&mdash;remains central to the project's initial context, but expansion projects need not hew to it with any particular fidelity.
-Configuration options are not limited to the arthropods, nor even to lifeforms as a whole, and may include fantastical creatures, inanimate objects, and non-representational constructions.
+The original physical configuration of **Ocellight** is that of a bustier resembling a giant spider’s head, its cups reminiscent of ocelli.
+The original conception&mdash;as a spatial and temporayl visualization of the dynamics of personal space&mdash;remains central to the project’s initial context, but expansion projects need not hew to it with any particular fidelity.
+Configuration options are not limited to the arachnids, nor even to existing lifeforms as a whole, and may include fantastical creatures and non-representational constructions.
 
 Multiple instances of **Ocellight** may also be designed to interact with one another, cooperatively as well as competitively.
 
@@ -84,7 +84,7 @@ Modifications that could be made include:
 
 - Attack, decay, sustain, release (ADSR) parameters
 
-	- The nominal behavior of the LED displays is to react immediately to the intrusion of an object into the space, to remain steadily lit while the object's proximity remains unchanged, and to fade back to baseline only gradually after the object departs.
+	- The nominal behavior of the LED displays is to react immediately to the intrusion of an object into the space, to remain steadily lit while the object’s proximity remains unchanged, and to fade back to baseline only gradually after the object departs.
 	- This can be modified by applying different ADSR curves.
 
 - Color mixing
@@ -104,12 +104,12 @@ Overall processing capabilities can be expanded in nearly limitless ways, includ
 
 - Memory/history
 
-	- E.g., a second approach within a short period of time might give a more "fearful" light pattern
-	- E.g., the longer an intruder lingers, even without moving, the "angrier" the light pattern might become
+	- E.g., a second approach within a short period of time might give a more “fearful” light pattern
+	- E.g., the longer an intruder lingers, even without moving, the “angrier” the light pattern might become
 
 - Pattern shaping
 
-	- E.g., both ocelli look "toward" the nearest object like tracking eyes
+	- E.g., both ocelli look “toward” the nearest object like tracking eyes
 
 - Communication capabilities
 
