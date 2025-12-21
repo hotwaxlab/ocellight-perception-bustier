@@ -30,7 +30,7 @@ The firmware logic loop (heartbeat) continuously performs the following sequence
 1. Apply an overall brightness modifier to all pixels, according to the position of the brightness potentiometer
 1. Drive each LED accordingly
 
-If serial communication is enabled, the firmware can communicate key operational parameters to a debugger/monitor, and an external user can query and modify the firmware's behavior.
+If serial communication is enabled, the firmware can communicate key operational parameters to a debugger/monitor, and an external user can query and modify the firmware’s behavior.
 
 All sensing and recording is local and short-term.
 There is no long-term data logging, wireless transmission, etc.
@@ -39,7 +39,7 @@ There is no long-term data logging, wireless transmission, etc.
 
 ### Ultrasonic Sensor Tuning
 
-Each proximity sensor operates independently, giving the garment's responses a certain amount of directionality.
+Each proximity sensor operates independently, giving the garment’s responses a certain amount of directionality.
 
 Sensor thresholds, response curves, and ping frequencies are tuned for human-scale distances and interactions.
 
@@ -86,10 +86,12 @@ These include minimum and maximum proximity, color ranges and patterns, loop fre
 Builders are encouraged to tune and alter these values, particularly based on such use considerations as ambient lighting, sensor sensitivity, and wearer comfort.
 
 [//]: # (
-\ TODO: Things that can interfere: other sensors sending while we're listening for an echo
+\ TODO: Things that can interfere: other sensors sending while one is still listening for an echo
 )
 
-See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenues of inquiry.
+See the [expansion ideas][expansion-ideas] file for some suggested avenues of inquiry.
+
+[expansion-ideas]: /docs/expansion-ideas.md "Expansion ideas"
 
 ---
 
@@ -112,7 +114,7 @@ No calibration is performed, and there are no sensors to detect ambient temperat
 1. The minimum round-trip flight time that can be measured must be somewhat greater than the duration of the sensing pulse (200&thinsp;&micro;sec. = eight cycles of a 40&thinsp;kHz signal).
 This corresponds to a proximity of roughly 4&thinsp;cm under standard conditions.
 
-Due to these and other environmental and timing uncertainties, the empirically observed measurement granularity (&plusmn;4 cm) is somewhat larger than the value computed for an ideal physical system (&plusmn;3 mm).
-However, **Ocellight** favors responsiveness over precision in any case, since for its purposes, a "felt" warning is not only as good as, but in many ways more apropos than, a perfect measurement.
+Due to these and other environmental and timing uncertainties, the empirically observed measurement granularity (&plusmn;4&thinsp;cm) is somewhat larger than the value computed for an ideal physical system (&plusmn;3&thinsp;mm).
+However, **Ocellight** favors responsiveness over precision in any case, since for its purposes, a “felt” warning is not only as good as, but in many ways more apropos than, a perfect measurement.
 
 ---
