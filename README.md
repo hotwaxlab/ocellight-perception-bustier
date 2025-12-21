@@ -41,18 +41,18 @@ Far from simply retrofitting a dynamic light show into an existing garment, **Oc
  "Wikipedia: Simple eye in invertebrates"
 
 **Ocellight** is a body-mounted proximity-sensing system that translates nearby motion into immediate visual feedback.
-It is constructed as a bustier resembling a giant spider's head, its cups repurposed into a pair of *ocelli* (the small eye-like structure found in many spiders and other creatures).
-But these ocelli glow with light, their color and intensity changing in response to what they "see" in front of them.
+It is constructed as a bustier resembling a giant spider’s head, its cups repurposed into a pair of *ocelli* (the small eye-like structure found in many spiders and other creatures).
+But these ocelli glow with light, their color and intensity changing in response to what they “see” in front of them.
 
 A typical interaction is as follows:
 
-1. Normally, both ocelli glow with a "calm" pattern of light.
+1. Normally, both ocelli glow with a “calm” pattern of light.
 
-1. As a nearby environmental object (e.g., a person) crosses into the wearer's personal space, ultrasonic sensors pick up its distance and velocity.
+1. As a nearby environmental object (e.g., a person) crosses into the wearer’s personal space, ultrasonic sensors pick up its distance and velocity.
 
-1. The ocelli begin to adopt a "warning/angry/fearful" glow, in patterns that also indicate the intruder's direction, proximity, and rapidity of approach.
+1. The ocelli begin to adopt a “warning/angry/fearful” glow, in patterns that also indicate the intruder’s direction, proximity, and rapidity of approach.
 
-1. Once the intruder&mdash;and/or the wearer&mdash;has retreated, the ocelli gradually (perhaps tentatively) return to their "calm" glow.
+1. Once the intruder&mdash;and/or the wearer&mdash;has retreated, the ocelli gradually (perhaps tentatively) return to their “calm” glow.
 
 Thus, even without screens, sounds, or text notifications, environmental cause and effect become plainly visible.
 The result is a wearable interface that reacts to its surroundings and reflects its state back to them&mdash;borrowing from non-human vision systems to extend human awareness.
@@ -88,7 +88,7 @@ The principal custom components are:
 - **Printed circuit board**: Reduces wiring complexity; improves reliability
 - **Cable harness**: A single pluggable ribbon cable connects all the components, simplifying swapping
 
-More detail is available in [hardware/README.md](/hardware/README.md).
+More detail is available in the hardware [README][hardware-readme] file.
 
 ---
 
@@ -101,7 +101,7 @@ Sensor input is continually mapped to light output via tunable thresholds and no
 The algorithm driving the light patterns mimics the jitters and fluctuations of real-life interactions.
 Signal spikes and dips are smoothed out; occasional noise and uncertainty are added.
 
-More detail is available in [firmware/README.md](/firmware/README.md).
+More detail is available in the firmware [README][firmware-readme] file.
 
 ---
 
@@ -120,7 +120,7 @@ Building electronics for the body means designing for:
 
 These constraints shape every part of the system, from component placement to firmware timing.
 
-More detail is available in [fabrication/README.md](/fabrication/README.md).
+More detail is available in the fabrication [README][fabrication-readme] file.
 
 ---
 
@@ -147,7 +147,9 @@ The purpose of this award is to prioritize learning and sharing.
 - Patterns documented here may be useful for other wearable, assistive, or expressive interfaces
 - Interested persons are encouraged to adapt, simplify, or repurpose it as desired, including for other wearable or body-mounted interfaces.
 
-See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenues of inquiry.
+See the [expansion ideas][expansion-ideas] file for some suggested avenues of inquiry.
+
+[expansion-ideas]: /docs/expansion-ideas.md "Expansion ideas"
 
 ---
 [//]: # (
@@ -155,9 +157,11 @@ See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenu
 \
 \## Media
 \
-\- **Demo video:** see [media/demo-video.md]\(/media/demo-video.md\).
-\- **Process and build images:** available in [media/photos/]\(/media/photos/\).
+\- **Demo video:** See [media/demo-video][demo-video].
+\- **Process and build images:** Available in [media/photos/][photos].
 \
+\[demo-video]: /media/demo-video.md "Demo video"
+\[photos]: /media/photos/ "Photos"
 \---
 )
 
