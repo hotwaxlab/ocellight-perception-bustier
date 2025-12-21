@@ -7,7 +7,7 @@
 #### Open-Source Wearable Hardware Project
 
 [//]: # (
-![image][image-title-card]
+![image-title-card][]
 )
 
 [//]: # (
@@ -34,9 +34,11 @@ Far from simply retrofitting a dynamic light show into an existing garment, **Oc
 
 ## What Is This?
 
-### Ocellight = [Ocelli][ocelli] + Light
+### Ocellight = [Ocelli][def-ocelli] + Light
 
-[ocelli]: https://en.wikipedia.org/wiki/Simple_eye_in_invertebrates#Spider_eyes "Wikipedia: Simple eye in invertebrates"
+[def-ocelli]:
+ https://en.wikipedia.org/wiki/Simple_eye_in_invertebrates#Spider_eyes
+ "Wikipedia: Simple eye in invertebrates"
 
 **Ocellight** is a body-mounted proximity-sensing system that translates nearby motion into immediate visual feedback.
 It is constructed as a bustier resembling a giant spider's head, its cups repurposed into a pair of *ocelli* (the small eye-like structure found in many spiders and other creatures).
@@ -86,7 +88,7 @@ The principal custom components are:
 - **Printed circuit board**: Reduces wiring complexity; improves reliability
 - **Cable harness**: A single pluggable ribbon cable connects all the components, simplifying swapping
 
-More detail is available in `hardware/README.md`.
+More detail is available in [hardware/README.md](/hardware/README.md).
 
 ---
 
@@ -99,7 +101,7 @@ Sensor input is continually mapped to light output via tunable thresholds and no
 The algorithm driving the light patterns mimics the jitters and fluctuations of real-life interactions.
 Signal spikes and dips are smoothed out; occasional noise and uncertainty are added.
 
-More detail is available in `firmware/README.md`.
+More detail is available in [firmware/README.md](/firmware/README.md).
 
 ---
 
@@ -118,7 +120,7 @@ Building electronics for the body means designing for:
 
 These constraints shape every part of the system, from component placement to firmware timing.
 
-More detail is available in `fabrication/README.md`.
+More detail is available in [fabrication/README.md](/fabrication/README.md).
 
 ---
 
@@ -145,7 +147,7 @@ The purpose of this award is to prioritize learning and sharing.
 - Patterns documented here may be useful for other wearable, assistive, or expressive interfaces
 - Interested persons are encouraged to adapt, simplify, or repurpose it as desired, including for other wearable or body-mounted interfaces.
 
-See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
+See [docs/expansion-ideas.md](/docs/expansion-ideas.md) for some suggested avenues of inquiry.
 
 ---
 [//]: # (
@@ -153,8 +155,8 @@ See `docs/expansion-ideas.md` for some suggested avenues of inquiry.
 \
 \## Media
 \
-\- **Demo video:** see `media/demo-video.md`
-\- **Process and build images:** available in `media/photos/`
+\- **Demo video:** see [media/demo-video.md]\(/media/demo-video.md\).
+\- **Process and build images:** available in [media/photos/]\(/media/photos/\).
 \
 \---
 )
