@@ -2,169 +2,119 @@
 
 #### Open-Source Wearable Hardware Project
 
-### Fabrication
+### Firmware
 
 ---
 
-# Overview
+## Overview
 
-**Ocellight** is a piece of wearable art, which means that attention must be paid not only to electronic circuitry, but also to the finesse of fabrication.
-This document describes the fabrication process: patterning, choice of materials, and construction techniques that allow electronics to live comfortably, visibly, and symbolically on the body.
+The user interface encapsulated by the firmware is shaped by a number of design principles:
 
-The result gives not a locked-down fashion pattern, but rather a reproducible starting point.
+- **Transparency**: Sensor input maps directly to output behavior
+- **Predictability**: No hidden states or unexpected modes
+- **Low cognitive load**: Light communicates without demanding attention
+- **Graceful failure**: If something breaks, it does so visibly
 
----
-
-## Garment Concept and Fit
-
-The form of a bustier was chosen for its cultural charge and its ability to carry structure without relying on straps or backpacks.
-The piece is designed to sit securely against the torso while keeping the LED ocelli clearly readable in social space.
-
-Fit is intentionally firm but not restrictive, distributing weight across the rib cage without relying on shoulder straps.
+The goal is not to simulate intelligence, but to extend perception.
 
 ---
 
-## Patterning and Structure
+## Core Behavior
 
-The base pattern is derived from a traditional bustier block, modified to support:
+The firmware logic loop (heartbeat) continuously performs the following sequence:
 
-- A rigid or semi-rigid front structure
-- Mounting points for the “brain” (PCB), sensors, and ocelli (LED domes)
-- Cable routing paths hidden between layers
-- Spider-like features
+1. Read the proximity value (distance to nearest object) of each sensor
+1. Read the position of the wearer-adjustable potentiometer
+1. Apply time-based smoothing to all the above readings
+1. Compute the color and base brightness of each pixel, using a distance-weighted PID (proportional&ndash;integral&ndash;differential) mapping to merge the proximity values from both sensors with a default (background) texture
+1. Apply an overall brightness modifier to all pixels, according to the position of the brightness potentiometer
+1. Drive each LED accordingly
 
-[Pattern files][pattern] are provided as reference materials and may need to be adapted to the wearer’s body measurements and intended use.
+If serial communication is enabled, the firmware can communicate key operational parameters to a debugger/monitor, and an external user can query and modify the firmware’s behavior.
 
-[pattern]: /fabrication_pattern.pdf "Pattern file"
-
----
-
-## Materials and Fabric Choices
-
-Materials selection should balance structure, comfort, and durability:
-
-- **Outer layer**: Canvas for structure plus faux fur to simulate a spider’s exterior
-- **Inner layer**: Breathable lining suitable for skin contact, rigid enough to support boning
-- **Structural support**: Canvas, interfacing, boning
-
-Builders are encouraged to experiment with materials that suit any aesthetic, climate, or use case.
+All sensing and recording is local and short-term.
+There is no long-term data logging, wireless transmission, etc.
 
 ---
 
-## Ocelli (LED Domes)
+### Ultrasonic Sensor Tuning
 
-Each LED dome must diffuse the light of an LED that lies only a small distance (on the order of millimeters) beneath its inner surface.
-The interior of the dome consists of multiple layers, each of which must be accessible for troubleshooting and repairability.
+Each proximity sensor operates independently, giving the garment’s responses a certain amount of directionality.
+
+Sensor thresholds, response curves, and ping frequencies are tuned for human-scale distances and interactions.
+
+---
+
+### LED Interpretation
+
+Inputs received from the sensors are continually mapped to the individually addressable LEDs within each cup in multiple ways:
+
+- Noticeability:
+
+	- Patterns are noticeable to an observer who views them either directly or peripherally
+	- The wearer has limited ability to observe the LED patterns directly
+
+- Parsability:
+
+	- Patterns can be parsed at a glance
+	- Color shifts indicate proximity
+	- Brightness increases as distance closes
+	- Background can be set to an appropriate color or texture
+
+---
+
+### Timing and Performance
+
+The firmware loop runs continuously and regularly.
+
+- Blocking and noticeable latency are avoided
+- Update rate prioritizes smooth fades over sharp transitions
+- Low power draw supports extended wear (on the order of 100s of minutes for )
+- Conservative duty cycles help temper thermal output
+
+System startup takes less than two seconds.
+
+---
+
+## Operational Parameters and Future Expandability
+
+The modular firmware design supports adding and swapping various components and behaviors.
+
+Several operational parameters are exposed as constants within the code.
+These include minimum and maximum proximity, color ranges and patterns, loop frequency, and smoothing functions.
+
+Builders are encouraged to tune and alter these values, particularly based on such use considerations as ambient lighting, sensor sensitivity, and wearer comfort.
 
 [//]: # (
-![image-dome][]
+\ TODO: Things that can interfere: other sensors sending while one is still listening for an echo
 )
 
-[//]: # (
-\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
-\ ELSE COMMENT OUT <img ...> LINE BELOW
-)
-[image-dome]: assets/fabrication_led-dome.png "LED dome: exploded view"
-<img src="assets/fabrication_led-dome.png" alt="LED dome: exploded view" width="90%">
+See the [expansion ideas][expansion-ideas] file for some suggested avenues of inquiry.
 
-The construction, from inner to outer layers, is:
-
-- **Inner dome**: Made from rigid 5&thinsp;mm EVA foam, formed to the shape of a half-dome.
-- **LED light strip**: Mounted on the inner dome using adhesive.
-Lights are installed in short strips in order to sit flat on the dome.
-See the section on [installing LEDs](#installing-leds).
-- **LED light dome**: Made from 5&thinsp;mm LED foam, which diffuses the individual light sources to create a “smear” effect.
-- **Clear dome**: 6&Prime; acrylic dome that is mechanically frosted on the inside to diffuse light further.
-The outside retains the high-gloss finish of acrylic to simulate the gloss on a spider’s ocelli.
-- **Outer fabric**: Attached to the clear dome with Velcro along the edges, for ease of detaching.
-
-**SAFETY NOTE**:
-Chemically etching acrylic can be an extremely toxic process.
-*Do your research.*
-We opted for a (less perfect) mechanically frosted finishing by using high-grit sandpaper, water, and elbow grease, because we like living.
+[expansion-ideas]: /docs/expansion-ideas.md "Expansion ideas"
 
 ---
 
-## Sewing and Assembly
+## Limitations and Workarounds
 
-Construction is not very different from that of a traditional bustier:
+### Proximity Measurement Precision
 
-1. **Foundation**: Assemble the lining.
-Structure with boning.
-1. **Dome**: Attach the completed LED domes to the foundation.
-1. **Spider**: Assemble the outer shell.
-Install spider bit embellishments.
-1. **Bustier**: Attach the lining, structure, and outer shell.
+Each ultrasonic sensor signal is converted to a *z-*<span></span>distance by multiplying the round-trip delay time by one-half the speed of sound.
+This is subject to a number of limitations, including the following:
 
----
+1. The strength of the echo detected by each ultrasonic sensor may vary based on such factors as the number, size, composition, configuration, and acoustic reflectivity of the intruding object(s).
 
-## Installing LEDs
+1. Due to temporal disconnects within and between the microcontroller unit and the ultrasonic transmitter and receiver, the round-trip delay time cannot be measured exactly.
+A hard-wired correction value is applied; its value is an approximation and is based on a calibration procedure performed during development.
 
-COB (chip-on-board) LEDs are conveniently sold in strips with enclosed copper; however, forming the somewhat stiff strips to a dome presents a challenge.
-Laying out a single continuous strip in a spiral may work for very shallow angles but will pucker on a dome like a layered cake.
+1. The apparent speed of sound in air varies with ambient temperature, humidity, wind velocity, and other parameters (though not, interestingly, with altitude).
+The distance conversion uses a nominal speed value that is approximately correct over a reasonable range of anticipated conditions.
+No calibration is performed, and there are no sensors to detect ambient temperature, humidity, wind velocity, etc.
 
-We solved this issue by installing the LEDs in short strips that are then soldered together.
-(See the hardware [README][hardware-readme-led-voltage-drop] file for a discussion of “laddering” the power and ground lines between strips.)
+1. The minimum round-trip flight time that can be measured must be somewhat greater than the duration of the sensing pulse (200&thinsp;&micro;sec. = eight cycles of a 40&thinsp;kHz signal).
+This corresponds to a proximity of roughly 4&thinsp;cm under standard conditions.
 
-[hardware-readme-led-voltage-drop]: /hardware/README.md#led-voltage-drop "Hardware README: LED voltage drop"
-
-Individual LEDs are then visually mapped onto a Cartesian grid to give the coordinates needed for displaying images or designs.
-See the firmware [README][firmware-readme] file for details.
-
-[firmware-readme]: /firmware/README.md "Firmware README"
-
-Patience and a lot of practice will make this process go faster.
-
-\[Diagram to come]
-
-[//]: # (
-\ TODO: Add diagram
-)
-
----
-## Mounting Electronics
-
-Electronics are mounted using a combination of:
-
-- Mechanical fasteners
-- Sewn channels or pockets
-- Panels (removable for maintenance)
-
-Be sure to build in wire slack and strain relief&mdash;this garment will move!
-
----
-
-## Wearability and Comfort Considerations
-
-Because this piece is worn directly on the body:
-
-- Sharp edges should be avoided or padded
-- Weight should be distributed evenly across the torso
-- Electronics must be isolated from direct skin contact
-
-Testing should always be done incrementally and cautiously.
-
----
-
-## Variations and Adaptations
-
-The fabrication approach is intentionally modular.
-This structure can support:
-
-- Alternative garment silhouettes
-- Different body placements
-- Expanded sensor arrays
-- Non-garment sculptural interpretations
-
-Please adapt away and show us what terrifying creatures you build.
-
----
-
-## Work in Progress
-
-Fabrication methods continue to evolve alongside the electronics.
-Photos, revisions, and updated pattern files will be added as the wearable prototype progresses.
-
-This documentation reflects an ongoing conversation between craft, technology, and the body.
+Due to these and other environmental and timing uncertainties, the empirically observed measurement granularity (&plusmn;4&thinsp;cm) is somewhat larger than the value computed for an ideal physical system (&plusmn;3&thinsp;mm).
+However, **Ocellight** favors responsiveness over precision in any case, since for its purposes, a “felt” warning is not only as good as, but in many ways more apropos than, a perfect measurement.
 
 ---
