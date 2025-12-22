@@ -98,7 +98,7 @@ Notes:
 	- WS2812B or similar
 	- Preferred density: 160/mm
 	- Preferred width: 5&thinsp;mm or less
-	- Voltage: 5V
+	- Operating voltage: 5V
 
 - **Proximity sensor**:
 
@@ -106,13 +106,13 @@ Notes:
 	- Preferred diameter: 8&thinsp;mm or less
 	- Operating frequency: 40&thinsp;kHz
 	- Effectual angle: 15&deg;
-	- Voltage: 5V
+	- Operating voltage: 5V
 
 - **Brightness potentiometer**:
 
 	- Controls the overall brightness of the LEDs, from full-off to full-on
 	- Adjustable by the wearer
-	- Voltage: 0V&ndash;3V3
+	- Operating voltage: 0V&ndash;3V3
 
 - **Power bank**:
 
