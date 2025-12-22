@@ -90,8 +90,7 @@ Notes:
 	- Voltage: 3V3
 
 [pinout]:
- <https://javanelec.com/stfiles/getappdocument/1/true/
-  f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8>
+ <https://javanelec.com/stfiles/getappdocument/1/true/f94d9c02-935a-4075-8484-f57aec67dcc0.pdf#page=8>
  "Pinout diagram"
 
 - **LED**:
