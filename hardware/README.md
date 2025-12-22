@@ -223,9 +223,9 @@ This can be implemented by “laddering” the 5V and ground signals from each s
 To avoid burning out the MCU, the LEDs must not draw their power from the MCU’s 5V power supply.
 Instead, they must be powered directly from the power bank.
 
-To avoid voltage drops, a 1000&thinsp;&micro;F buffer capacitor (10V or more) is placed across the power and ground lines to each LED strip, as close as practical to the first LED.
-
 If the power bank is incapable of supplying sufficient power, some LEDs may be seen to glow with a dim or yellow light at high brightness levels.
+
+To avoid transient voltage drops, a 1000&thinsp;&micro;F buffer capacitor (rated at 10V or more) is placed across the power and ground lines to each LED strip, as close as practical to the first LED.
 
 ### LED Data Ringing
 
