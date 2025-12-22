@@ -19,6 +19,20 @@ The goal is not to simulate intelligence, but to extend perception.
 
 ---
 
+## Source Code
+
+The project is coded in C++, suitable for building in an MCU-oriented IDE such as Sloeber, or directly via shell commands.
+
+The code relies on a number of widely available freeware libraries, including **FastLED** and various Arduino packages.
+
+The entire project source code (with the exception of external libraries) is presently undergoing cleanup and modularization.
+It will be made available in this section of the repo by March 2026.
+A complete list of external dependencies will also be made available at that time.
+
+Those interested in viewing the source code before that time are invited to contact us.
+
+---
+
 ## Core Behavior
 
 The firmware logic loop (heartbeat) continuously performs the following sequence:
@@ -30,7 +44,8 @@ The firmware logic loop (heartbeat) continuously performs the following sequence
 1. Apply an overall brightness modifier to all pixels, according to the position of the brightness potentiometer
 1. Drive each LED accordingly
 
-If serial communication is enabled, the firmware can communicate key operational parameters to a debugger/monitor, and an external user can query and modify the firmware’s behavior.
+The firmware is typically run in standalone mode, with no data transfer to or from the outside world apart from the sensors, LEDs, and brightness control.
+However, if serial communication is enabled in the firmware, key operational parameters can be communicated to a debugger/monitor at runtime via the MCU’s USB port, and an external user can query and modify the firmware’s behavior.
 
 All sensing and recording is local and short-term.
 There is no long-term data logging, wireless transmission, etc.
