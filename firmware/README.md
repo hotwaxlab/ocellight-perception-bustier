@@ -21,15 +21,14 @@ The goal is not to simulate intelligence, but to extend perception.
 
 ## Source Code
 
-The project is coded in C++, suitable for building in an MCU-oriented IDE such as Sloeber, or directly via shell commands.
+The project is coded in C++ and is suitable for building in an MCU-oriented IDE such as Sloeber, or directly via shell commands.
+It relies on a number of widely available freeware libraries, including **FastLED** and various Arduino packages.
 
-The code relies on a number of widely available freeware libraries, including **FastLED** and various Arduino packages.
+The code is presently undergoing cleanup and modularization.
+With the exception of the external libraries, source for the entire project will be made available in this section of the repo by March 2026.
+Full documentation, including build notes and a complete list of external dependencies, will also be made available at that time.
 
-The entire project source code (with the exception of external libraries) is presently undergoing cleanup and modularization.
-It will be made available in this section of the repo by March 2026.
-A complete list of external dependencies will also be made available at that time.
-
-Those interested in viewing the source code before that time are invited to contact us.
+Those interested in viewing all or a portion of the source code before March 2026 are invited to contact us.
 
 ---
 
