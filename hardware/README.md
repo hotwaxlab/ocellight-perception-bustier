@@ -211,9 +211,10 @@ The system is active whenever the power bank is connected to the microcontroller
 To avoid parasitic power draw, the MCU should never be energized unless the LEDs are also energized
 
 
-### LED Voltage Drop
+### LED Bus Voltage Drop
 
-Individually addressable LEDs typically suffer from substantial voltage drop over distances of a few meters, causing LEDs far from the power source to acquire a dim, yellow glow.
+The very thin copper traces used for the 5V and ground buses of individually addressable LEDs have non-negligible resistance.
+The result is typically a substantial voltage drop over distances of a few meters, causing LEDs far from the power source to acquire a dim, yellow glow.
 
 The workaround is to apply voltage injection.
 This can be implemented by “laddering” the 5V and ground signals from each strip of LEDs to the next, taking advantage of the fact that the LED strips used in the cups are inherently only a few decimeters long at most.
