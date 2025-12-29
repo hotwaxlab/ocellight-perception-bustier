@@ -108,18 +108,35 @@ We solved this issue by installing the LEDs in short strips that are then solder
 
 [hardware-readme-led-voltage-drop]: /hardware/README.md#led-voltage-drop "Hardware README: LED voltage drop"
 
+[//]: # (
+![image-led-install][]
+)
+
+[//]: # (
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
+)
+[image-dome]: assets/fabrication_led-map.png "LED strips"
+<img src="assets/fabrication_led-map.png" alt="LED strips" width="90%">
+
 Individual LEDs are then visually mapped onto a Cartesian grid to give the coordinates needed for displaying images or designs.
 See the firmware [README][firmware-readme] file for details.
 
 [firmware-readme]: /firmware/README.md "Firmware README"
 
-Patience and a lot of practice will make this process go faster.
-
-\[Diagram to come]
+[//]: # (
+![image-led-cartesian][]
+)
 
 [//]: # (
-\ TODO: Add diagram
+\ TO SCALE IMAGE, COMMENT OUT !... LINE ABOVE;
+\ ELSE COMMENT OUT <img ...> LINE BELOW
 )
+[image-dome]: assets/fabrication_led-cartesian.png "LED Cartesian Mapping"
+<img src="assets/fabrication_led-cartesian.png" alt="LED Cartesian Mapping" width="90%">
+
+Patience and a lot of practice will make this process go faster.
+
 
 ---
 ## Mounting Electronics
