@@ -61,19 +61,27 @@ Sensor thresholds, response curves, and ping frequencies are tuned for human-sca
 
 ### LED Interpretation
 
-Inputs received from the sensors are continually mapped to the individually addressable LEDs within each cup in multiple ways:
+Inputs received from the sensors are continually mapped to the individually addressable LEDs within each cup, producing a visual output stream that is:
 
-- Noticeability:
+- Noticeable:
 
-	- Patterns are noticeable to an observer who views them either directly or peripherally
-	- The wearer has limited ability to observe the LED patterns directly
+	- Patterns capture the attention of an observer who views them either directly or peripherally
+	- The wearer has the ability to observe the LED patterns directly, albeit in a limited way
 
-- Parsability:
+- Understandable:
 
-	- Patterns can be parsed at a glance
-	- Color shifts indicate proximity
-	- Brightness increases as distance closes
-	- Background can be set to an appropriate color or texture
+	- Patterns are designed to be parsed at a glance
+	- Shifts in color and brightness are tied to changes in proximity
+	- The default background illumination can be set to an appropriate color or texture map
+
+- Communicative:
+
+	- The essence of the garment is that it produces light patterns in response to physical presence.
+ However, this concept of “in response to” is highly subjective, because people tend to attribute conscious intentions to interactive systems.
+Do the lights seem to be flashing angrily? Coldly? Lazily? Warningly?
+These and many other perceived traits of the garment‘s “personality” are directly configurable in firmware.
+	- Many of the real-life species on whom the garment is based are known to exhibit specific behaviors, which the public often interprets as “attitudes” (e.g., the wolf spider is known for its fierceness, the harvestman for its timidity).
+A surprising number of these “attitudes” can be mimicked, exaggerated, or downplayed on the LEDs&mdash;again, controllable through firmware.
 
 ---
 
